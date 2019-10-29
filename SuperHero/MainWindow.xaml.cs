@@ -23,6 +23,9 @@ namespace SuperHero
         public MainWindow()
         {
             InitializeComponent();
+
+            PrincipalDockPanel.DataContext = Superheroe.GetSample();
+
         }
     }
 }

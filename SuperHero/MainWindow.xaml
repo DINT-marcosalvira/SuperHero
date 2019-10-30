@@ -8,8 +8,9 @@
         Title="MainWindow" Height="450" Width="800" Icon="batman.png">
     <Window.Resources>
         <local:ConvierteVengador x:Key="converter"></local:ConvierteVengador>
+        <local:Configuracion x:Key="Configuracion"  AjusteImagen="Fill" Fondo="#c9f0ff"></local:Configuracion>
     </Window.Resources>
-    
+
     <DockPanel LastChildFill="True" x:Name="PrincipalDockPanel">
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
@@ -25,16 +26,16 @@
                 <TextBlock Margin="5,5,5,5" Text="{Binding ElementName=checkBoxVengador, Path=IsChecked, Converter= {StaticResource converter}}"></TextBlock>
             </StackPanel>
         </StackPanel>
-        <StackPanel Width="300" DockPanel.Dock="Right">
+        <StackPanel Width="300" DockPanel.Dock="Right" x:Name="SecondStackPanel">
             <TextBlock Margin="2,2,2,2" >Nombre</TextBlock>
-            <TextBox Margin="2,5,5,5" Text="{Binding Path=Nombre}"></TextBox>
+            <TextBox Margin="2,5,5,5" Text="{Binding Path=Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock Margin="2,5,5,5">Enemigo</TextBlock>
-            <TextBox Margin="2,5,5,5" Text="{Binding Path=Enemigo}"></TextBox>
+            <TextBox Margin="2,5,5,5" Text="{Binding Path=Enemigo, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock Margin="2,5,5,5">Foto</TextBlock>
             <TextBox x:Name="textBoxFoto" Margin="2,5,5,5" Text="{Binding Path=Foto}"></TextBox>
             <CheckBox Margin="2,5,5,5" x:Name="checkBoxVengador">¿Vengador?</CheckBox>
             <Button MaxWidth="50">Editar</Button>
         </StackPanel>
-        <Image Source="{Binding ElementName=textBoxFoto, Path=Text}"></Image>
+        <Image Source="{Binding ElementName=textBoxFoto, Path=Text, UpdateSourceTrigger=PropertyChanged}" Stretch="{Binding  Source={StaticResource Configuracion}, Path=AjusteImagen}"></Image>
     </DockPanel>
 </Window>
